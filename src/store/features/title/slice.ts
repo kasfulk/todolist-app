@@ -17,7 +17,7 @@ const webTitleSlice = createSlice({
   },
 })
 
-export const getTitle = (state: RootState) => state.title
+export const getTitle = (state: RootState) => state.reducer
 export const { editTitle } = webTitleSlice.actions
 
 export default webTitleSlice.reducer

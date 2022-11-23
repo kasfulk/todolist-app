@@ -18,13 +18,13 @@ import { v4 as uuidv4 } from 'uuid'
 const Home: NextPage = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const dispacth = useDispatch()
+  const dispatch = useDispatch()
 
-  const todoList = useSelector(getAllTodoList)
+  const { todoList } = useSelector(getAllTodoList)
 
   const handleButton = () => {
     const id = uuidv4()
-    dispacth(
+    dispatch(
       addTodoList({
         id,
         title,

@@ -24,7 +24,7 @@ const todoListSlice = createSlice({
   },
 })
 
-export const getAllTodoList = (state: RootState) => state.todoList
+export const getAllTodoList = (state: RootState) => state.reducer
 export const { addTodoList, deleteTodoList, editTodoList } =
   todoListSlice.actions
 
