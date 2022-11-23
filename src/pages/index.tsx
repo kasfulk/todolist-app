@@ -10,11 +10,8 @@ import {
   Textarea,
   Button,
 } from '@mantine/core'
-import {
-  getAllTodoList,
-  addTodoList,
-  deleteTodoList,
-} from '@/store/features/todo-list/slice'
+import { getAllTodoList, addTodoList } from '@/store/features/todo-list/slice'
+import { TodoListCard } from '@/components/todo-list-card'
 import { useDispatch, useSelector } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -32,6 +29,7 @@ const Home: NextPage = () => {
         id,
         title,
         description,
+        isCompleted: false,
       }),
     )
   }
@@ -65,15 +63,7 @@ const Home: NextPage = () => {
         </div>
       </Paper>
       <Container>
-        {todoList?.map((value) => (
-          <>
-            <h4>{value.title}</h4>
-            <h5>{value.description}</h5>
-            <Button onClick={() => dispacth(deleteTodoList(value))}>
-              Delete
-            </Button>
-          </>
-        ))}
+        <TodoListCard data={todoList} />
       </Container>
     </Container>
   )
