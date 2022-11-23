@@ -1,11 +1,11 @@
-import React from 'react'
-import { TodoList } from '@/types/todo-list'
-import { deleteTodoList, editTodoList } from '@/store/features/todo-list/slice'
-import { useDispatch } from 'react-redux'
-import { Button, SimpleGrid, Card, Text, createStyles } from '@mantine/core'
+import React from 'react';
+import { TodoList } from '@/types/todo-list';
+import { deleteTodoList, editTodoList } from '@/store/features/todo-list/slice';
+import { useDispatch } from 'react-redux';
+import { Button, SimpleGrid, Card, Text, createStyles } from '@mantine/core';
 
 interface Props {
-  data: TodoList[]
+  data: TodoList[];
 }
 
 const useStyles = createStyles((theme) => ({
@@ -25,21 +25,21 @@ const useStyles = createStyles((theme) => ({
       marginTop: theme.spacing.sm,
     },
   },
-}))
+}));
 
 export const TodoListCard = ({ data }: Props) => {
-  const dispatch = useDispatch()
-  const classes: any = useStyles()
+  const dispatch = useDispatch();
+  const classes: any = useStyles();
 
-  const handleDelete = (data: TodoList) => dispatch(deleteTodoList(data))
+  const handleDelete = (data: TodoList) => dispatch(deleteTodoList(data));
   const handleComplete = (data: TodoList) => {
     dispatch(
       editTodoList({
         ...data,
         isCompleted: !data.isCompleted,
       }),
-    )
-  }
+    );
+  };
   return (
     <React.Fragment>
       <SimpleGrid
@@ -96,5 +96,5 @@ export const TodoListCard = ({ data }: Props) => {
         ))}
       </SimpleGrid>
     </React.Fragment>
-  )
-}
+  );
+};

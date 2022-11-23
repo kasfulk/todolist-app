@@ -1,6 +1,6 @@
-import React from 'react'
-import type { NextPage } from 'next'
-import { useState } from 'react'
+import React from 'react';
+import type { NextPage } from 'next';
+import { useState } from 'react';
 import {
   Paper,
   Text,
@@ -9,21 +9,21 @@ import {
   TextInput,
   Textarea,
   Button,
-} from '@mantine/core'
-import { getAllTodoList, addTodoList } from '@/store/features/todo-list/slice'
-import { TodoListCard } from '@/components/todo-list-card'
-import { useDispatch, useSelector } from 'react-redux'
-import { v4 as uuidv4 } from 'uuid'
+} from '@mantine/core';
+import { getAllTodoList, addTodoList } from '@/store/features/todo-list/slice';
+import { TodoListCard } from '@/components/todo-list-card';
+import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 
 const Home: NextPage = () => {
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const dispatch = useDispatch()
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const dispatch = useDispatch();
 
-  const { todoList } = useSelector(getAllTodoList)
+  const { todoList } = useSelector(getAllTodoList);
 
   const handleButton = () => {
-    const id = uuidv4()
+    const id = uuidv4();
     dispatch(
       addTodoList({
         id,
@@ -31,8 +31,8 @@ const Home: NextPage = () => {
         description,
         isCompleted: false,
       }),
-    )
-  }
+    );
+  };
 
   return (
     <Container size="xs" px="xs" py="md">
@@ -66,7 +66,7 @@ const Home: NextPage = () => {
         <TodoListCard data={todoList} />
       </Container>
     </Container>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
