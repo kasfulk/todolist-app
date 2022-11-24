@@ -1,6 +1,9 @@
 import React from 'react';
 import { TodoList } from '@/types/todo-list';
-import { deleteTodoList, editTodoList } from '@/store/features/todo-list/slice';
+import {
+  deleteTodoList,
+  toggleTodoList,
+} from '@/store/features/todo-list/slice';
 import { useDispatch } from 'react-redux';
 import { Button, SimpleGrid, Card, Text, createStyles } from '@mantine/core';
 
@@ -33,12 +36,7 @@ export const TodoListCard = ({ data }: Props) => {
 
   const handleDelete = (data: TodoList) => dispatch(deleteTodoList(data));
   const handleComplete = (data: TodoList) => {
-    dispatch(
-      editTodoList({
-        ...data,
-        isCompleted: !data.isCompleted,
-      }),
-    );
+    dispatch(toggleTodoList(data.id));
   };
   return (
     <React.Fragment>

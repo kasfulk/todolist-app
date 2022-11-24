@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TodoList } from '@/types/todo-list';
 import { RootState } from '@/store/store';
 
@@ -8,24 +8,30 @@ const todoListSlice = createSlice({
   name: 'todoList',
   initialState,
   reducers: {
-    addTodoList: (state, actions) => {
-      return [...state, actions.payload];
+    addTodoList: (state, action: PayloadAction<TodoList>) => {
+      return [...state, action.payload];
     },
-    deleteTodoList: (state, actions) => {
-      const { payload } = actions;
+    deleteTodoList: (state, action: PayloadAction<TodoList>) => {
+      const { payload } = action;
       return state.filter((value) => value.id !== payload.id);
     },
-    editTodoList: (state, actions) => {
-      const { payload } = actions;
+    editTodoList: (state, action: PayloadAction<TodoList>) => {
+      const { payload } = action;
       const editedIndex = state.findIndex((value) => value.id === payload.id);
       state[editedIndex] = payload;
+      return state;
+    },
+    toggleTodoList: (state, action: PayloadAction<string>) => {
+      const { payload } = action;
+      const editedIndex = state.findIndex((value) => value.id === payload);
+      state[editedIndex].isCompleted = !state[editedIndex].isCompleted;
       return state;
     },
   },
 });
 
 export const getAllTodoList = (state: RootState) => state.reducer;
-export const { addTodoList, deleteTodoList, editTodoList } =
+export const { addTodoList, deleteTodoList, editTodoList, toggleTodoList } =
   todoListSlice.actions;
 
 export default todoListSlice.reducer;
