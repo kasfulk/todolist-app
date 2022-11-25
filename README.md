@@ -7,4 +7,4 @@ First, run the development server:
 yarn dev
 ```
 
-### React, Redux, Redux-Persist, PWA, Mantine UI
+### Next.js, React, Redux, Redux-Persist, PWA, Mantine UI
