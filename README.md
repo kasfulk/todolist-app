@@ -1,6 +1,11 @@
 
 ## Todo List APP
 
+For installing:
+```bash
+yarn install
+```
+
 First, run the development server:
 
 ```bash
