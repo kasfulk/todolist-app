@@ -1,6 +1,11 @@
 
 ## Todo List APP
 
+before running all
+```bash
+npm i -g yarn
+```
+
 For installing:
 ```bash
 yarn install
